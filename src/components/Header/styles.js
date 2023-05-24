@@ -12,32 +12,6 @@ export const Container = styled.header`
   z-index: 999;
     
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
-
-  @media (max-width: 706px) {
-
-    > div {
-      justify-content: center;
-  
-      >.header_btn {
-        display: none;
-      }
-  
-      >.header_input_search {
-        display: none;
-      }
-
-    }
-
-    //> div {
-      > ul.menuHamburger {
-        display: flex;
-      //}
-    }
-
-  }
-  .menuHamburger {
-    display: none;
-  }
 `;
 
 export const Content = styled.div`
@@ -49,31 +23,74 @@ export const Content = styled.div`
   width: 121.2rem;
   height: 10.4rem;
 
-  padding: 0 4rem;
+  padding: 0 1rem;
   gap: 3.2rem;
+
+  > svg {
+    display: none;
+  }
+
+  @media (max-width: 769px) {
+    
+    > .header_btn {
+      button {
+        padding: 0 0.5rem 0 0;
+      }
+    }
+  }
+
+  @media (max-width: 601px) {
+    > svg {
+      display: flex;
+    }
+
+    > .header_btn {
+      display: none;
+    }
+  }
+
 `;
 
-export const Logo = styled.span`
+export const Logo = styled.a`
   display: flex;
   align-items: center;
   gap: 1rem;
 
-  > .logo_img {
+  .logo_img {
     width: 3rem;
     height: 3rem;
-
-    @media (max-width: 706px) {
-      width: 2rem;
-    }
   }
 
-  > .logo_title {
+  .logo_title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 2.4rem;
     line-height: 2.8rem;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+    .logo_admin {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.9rem;
+
+      color: ${({ theme }) => theme.COLORS.CAKE_200};
+    }
+
+    @media (max-width: 601px) {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.8rem;
+    }
+  }
+
+  @media (min-width: 601px) {
+    align-items: flex-start;
   }
 `;
 
@@ -92,7 +109,7 @@ export const InputSearch = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
-  > .input_search_input {
+  > input {
     width: 100%;
     max-width: 24.5rem;
 
@@ -107,6 +124,10 @@ export const InputSearch = styled.div`
       line-height: 1.6rem;
     }
   }
+  
+  @media (max-width: 601px) {
+    display: none;
+  }
 `;
 
 export const Logout = styled.a`
@@ -117,29 +138,22 @@ export const Logout = styled.a`
   border: none;
   background: none;
 
-  > svg {
+  > .logout_signOut {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-size: 3.2rem;
   }
-`;
 
-export const MenuHamburger = styled.ul`
-  list-style: none;
+  > .logout_receipt {
+    display: none;
+  }
 
-  width: 2.4rem;
+  @media (max-width: 601px) {
+    .logout_signOut {
+      display: none;
+    }
 
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  
-  > li {
-    display: block;
-
-    width: 100%;
-    height: .3rem;
-
-    border-radius: .5rem;
-
-    background-color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    > .logout_receipt {
+      display: flex;
+    }
   }
 `;

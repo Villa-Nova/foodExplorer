@@ -1,50 +1,81 @@
-import { MagnifyingGlass, SignOut, Receipt } from "@phosphor-icons/react";
+import { MagnifyingGlass, SignOut, Receipt, List } from "@phosphor-icons/react";
 
-import { Container, Logo, InputSearch, Content, Logout, MenuHamburger } from "./styles"
+import { Container, Logo, InputSearch, Content, Logout } from "./styles"
 import { Button } from "../Button";
 import foodLogo from "../../assets/foodLogo.svg"
 
 
 export function Header() {
 
-  function menuHamburger() {
-    document.querySelector(".menuHamburger").classList.toggle("active");
-    document.querySelector(".menuHamburger").classList.toggle("noActive");
-  };
+  let isAdmin = false;
 
   return(
     <Container>
-      <MenuHamburger className="menuHamburger noActive" id="menuHamburger" onClick={menuHamburger}>
-        <li></li>
-        <li></li>
-        <li></li>
-      </MenuHamburger>
+      {
+        isAdmin ?
 
-      <Content>
-        <Logo>
-          <img className="logo_img" src={foodLogo} alt="Logo do food explorer." />
+        <Content>
+          <List size={30} />
 
-          <div className="logo_title">
-            <span>
-              food explorer
-            </span>
+          <Logo>
+            <img className="logo_img" src={foodLogo} alt="Logo do food explorer." />
+
+            <div className="logo_title">
+              <span>
+                food explorer
+              </span>
+              <p className="logo_admin">
+                admin
+              </p>
+            </div>
+          </Logo>
+
+          <InputSearch>
+            <MagnifyingGlass color="#C4C4CC" size={21}/>
+
+            <input type="text" placeholder="Busque por pratos ou ingredientes"/>
+          </InputSearch>
+
+          <div className="header_btn">
+            <Button title="Novo prato"/>
           </div>
-        </Logo>
 
-        <InputSearch className="header_input_search">
-          <MagnifyingGlass color="#C4C4CC" size={21}/>
+          <Logout>
+            <SignOut size={22} className="logout_signOut"/>
+          </Logout>
+        </Content> 
 
-          <input type="text" className="input_search_input" placeholder="Busque por pratos ou ingredientes"/>
-        </InputSearch>
+        :
 
-        <div className="header_btn">
-          <Button icon={Receipt} title="Meu pedido (0)"/>
-        </div>
+        <Content>
+          <List size={30} />
 
-        <Logout className="logout">
-          <SignOut size={22}/>
-        </Logout>
-      </Content>      
+          <Logo>
+            <img className="logo_img" src={foodLogo} alt="Logo do food explorer." />
+
+            <div className="logo_title">
+              <span>
+                food explorer
+              </span>
+            </div>
+          </Logo>
+
+          <InputSearch>
+            <MagnifyingGlass color="#C4C4CC" size={21}/>
+
+            <input type="text" placeholder="Busque por pratos ou ingredientes"/>
+          </InputSearch>
+
+          <div className="header_btn">
+            <Button icon={Receipt} title="Meu pedido (0)"/>
+          </div>
+
+          <Logout>
+            <Receipt size={30} className="logout_receipt"/>
+            <SignOut size={22} className="logout_signOut"/>
+          </Logout>
+        </Content>
+      }
     </Container>
   );
 };

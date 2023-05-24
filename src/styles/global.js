@@ -13,10 +13,11 @@ export default createGlobalStyle`
   }
 
   body {
-//    background-color: ${({ theme }) => theme.COLORS.DARK_400};
-    background-color: #5500ff;
+    background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    //background-color: #5500ff;
 
-
+    min-width: 330px;
+    
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     -webkit-font-smoothing: antialiased;
     font-family: 'Roboto', sans-serif;
