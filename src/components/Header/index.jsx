@@ -1,23 +1,29 @@
 import { MagnifyingGlass, SignOut, Receipt, List } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 
-import { Container, Logo, InputSearch, Content, Logout } from "./styles"
+import { useAuth } from "../../hooks/auth";
+import { Container, Logo, InputSearch, Content, Logout } from "./styles";
 import { Button } from "../Button";
-import foodLogo from "../../assets/foodLogo.svg"
+import foodLogo from "../../assets/foodLogo.svg";
 
+export function Header({search, ...rest}) {
+  const { user, signOut } = useAuth();
 
-export function Header() {
+  const navigate = useNavigate();
 
-  let isAdmin = false;
+  function navigateNew() {
+    return navigate("/new");
+  };
 
   return(
-    <Container>
+    <Container {...rest} >
       {
-        isAdmin ?
+        user.isAdmin ?
 
         <Content>
           <List size={30} />
 
-          <Logo>
+          <Logo to="/">
             <img className="logo_img" src={foodLogo} alt="Logo do food explorer." />
 
             <div className="logo_title">
@@ -33,14 +39,14 @@ export function Header() {
           <InputSearch>
             <MagnifyingGlass color="#C4C4CC" size={21}/>
 
-            <input type="text" placeholder="Busque por pratos ou ingredientes"/>
+            <input type="text" placeholder="Busque por pratos ou ingredientes" onChange={e => {search(e.target.value)}}/>
           </InputSearch>
 
           <div className="header_btn">
-            <Button title="Novo prato"/>
+            <Button title="Novo prato" onClick={navigateNew} />
           </div>
 
-          <Logout>
+          <Logout type="button" onClick={signOut} >
             <SignOut size={22} className="logout_signOut"/>
           </Logout>
         </Content> 
@@ -50,7 +56,7 @@ export function Header() {
         <Content>
           <List size={30} />
 
-          <Logo>
+          <Logo to="/">
             <img className="logo_img" src={foodLogo} alt="Logo do food explorer." />
 
             <div className="logo_title">
@@ -63,7 +69,7 @@ export function Header() {
           <InputSearch>
             <MagnifyingGlass color="#C4C4CC" size={21}/>
 
-            <input type="text" placeholder="Busque por pratos ou ingredientes"/>
+            <input type="text" placeholder="Busque por pratos ou ingredientes" onChange={e => {search(e.target.value)}}/>
           </InputSearch>
 
           <div className="header_btn">
@@ -71,8 +77,13 @@ export function Header() {
           </div>
 
           <Logout>
+            <SignOut 
+              size={22} 
+              className="logout_signOut" 
+              type="button" 
+              onClick={signOut}
+            />
             <Receipt size={30} className="logout_receipt"/>
-            <SignOut size={22} className="logout_signOut"/>
           </Logout>
         </Content>
       }

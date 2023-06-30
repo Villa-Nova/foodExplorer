@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
   width: 100%;
@@ -20,8 +21,11 @@ export const Content = styled.div`
   justify-content: space-between;
   white-space: nowrap;
 
-  width: 121.2rem;
+  width: 100%;
+  //width: 169.2rem;
   height: 10.4rem;
+  margin-left: 12.3rem;
+  margin-right: 12.3rem;
 
   padding: 0 1rem;
   gap: 3.2rem;
@@ -31,27 +35,24 @@ export const Content = styled.div`
   }
 
   @media (max-width: 769px) {
-    
-    > .header_btn {
-      button {
-        padding: 0 0.5rem 0 0;
-      }
-    }
-  }
+    margin-left: 0;
+    margin-right: 0;
 
-  @media (max-width: 601px) {
     > svg {
       display: flex;
     }
 
     > .header_btn {
       display: none;
+
+      button {
+        padding: 0 0.5rem 0 0;
+      }
     }
   }
-
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -94,7 +95,7 @@ export const Logo = styled.a`
   }
 `;
 
-export const InputSearch = styled.div`
+export const InputSearch = styled.label`
   width: 100%;
   height: 4.8rem;
 
@@ -125,18 +126,20 @@ export const InputSearch = styled.div`
     }
   }
   
-  @media (max-width: 601px) {
+  @media (max-width: 769px) {
     display: none;
   }
 `;
 
-export const Logout = styled.a`
+export const Logout = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
     
   border: none;
   background: none;
+
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
   > .logout_signOut {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -147,7 +150,7 @@ export const Logout = styled.a`
     display: none;
   }
 
-  @media (max-width: 601px) {
+  @media (max-width: 769px) {
     .logout_signOut {
       display: none;
     }

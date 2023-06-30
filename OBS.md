@@ -17,3 +17,5 @@ npm = node package manager.
   - npm create vite@latest p/ instalar o vite o criador de setup do react nesse projeto.
   - npm install styled-components p/ instalar o pré processador q é o CSS-in-Js.
   - npm install react-icons --save p/ usar os icones da aplicação.
+  - pnpm i react-router-dom p/ fazer a navegação das pags.
+  - pnpm i axios p/ cosumir requisições http.

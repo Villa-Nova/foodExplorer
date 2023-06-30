@@ -6,6 +6,18 @@ export default createGlobalStyle`
     padding: 0;
 
     box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
   }
 
   :root {
@@ -13,28 +25,15 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.COLORS.DARK_400};
-    //background-color: #5500ff;
+    min-width: 398px;
 
-    min-width: 330px;
+    background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     -webkit-font-smoothing: antialiased;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 1.4rem;
-
-    *::-webkit-scrollbar {
-      display: none;
-    }
-
-    *::-webkit-scrollbar-corner {
-      display: none;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      display: none;
-    }
+    font-size: 1.6rem;
   }
 
   input {
